@@ -2,7 +2,7 @@
 public class Principale {
 
 	public static void main(String[] args) {
-		System.out.println("Ceci est un transfert de fichier.");
+		System.out.println("Ceci est un transfert.");
 		
 	}
 
