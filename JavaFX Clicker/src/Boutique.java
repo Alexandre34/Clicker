@@ -3,8 +3,10 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -24,8 +26,7 @@ public class Boutique implements EventHandler<ActionEvent>{
 	private static ArrayList<Button> grilleBoutique;
 	private static GridPane g;
 	private Stage fenetre;
-	private Label vit;
-	private Label fib;
+	private Label desc;
 	private Button achat;
 	private Achetable selection;
 	
@@ -40,29 +41,27 @@ public class Boutique implements EventHandler<ActionEvent>{
 		remplirListe();
 		
 		VBox description = new VBox(40);
-		vit = new Label("Prix vitamines : ");
-		fib = new Label("Prix fibres : ");
-		description.getChildren().addAll(vit, fib);
+		desc = new Label("Prix : ");
+		description.getChildren().addAll(desc);
 		
+		Font fond = new Font(20);
 		achat = new Button("Acheter");
+		achat.setFont(fond);
 		achat.setOnAction(this);
 		principal.add(g, 0, 0);
 		principal.add(description, 0, 1);
 		principal.add(achat, 0, 2);
-		Scene sc = new Scene(principal, 300, 200);
+		Scene sc = new Scene(principal, 500, 300);
 		fenetre.setScene(sc);
 		fenetre.showAndWait();
 	}
 	
 	private void remplirListe() {
-		for(int i = 0 ; i < 3 ; i++){
-			
+		for(int i = 0 ; i < Environnement1.NOMBRE_BOUTONS_BOUTIQUE ; i++){
 			Button b = new Button("Boutique "+Environnement1.élémentBoutique[i].toString());
 			grilleBoutique.add(b);
 			b.setMinSize(100, 100);
-			GridPane.setConstraints(b, i % 5, i / 5);
-			g.getChildren().add(b);
-			
+			g.add(b, i % 5, i / 5);
 			grilleBoutique.get(i).setOnAction(this);
 		}
 	}
@@ -73,10 +72,10 @@ public class Boutique implements EventHandler<ActionEvent>{
 			fenetre.close();
 		}
 		
-		for(int i = 0 ; i < 3 ; i++){
+		for(int i = 0 ; i < Environnement1.NOMBRE_BOUTONS_BOUTIQUE ; i++){
 			if(e.getSource() == grilleBoutique.get(i)){
 				selection = Environnement1.élémentBoutique[i];
-				this.vit.setText(selection.toString());
+				this.desc.setText(selection.affichage());
 			}
 		}
 	}

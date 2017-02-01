@@ -59,8 +59,10 @@ public class Graine implements Achetable{
 	}
 	
 	public String toString(){
-		
-		return "[G]"+type.toString();
+		return type.name();
+	}
 	
+	public String affichage() {
+		return "Prix vit : " +this.vitaminesPrix+ ". Prix fib : " +this.fibresPrix;
 	}
 }

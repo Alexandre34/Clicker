@@ -1,10 +1,8 @@
 
-
-
 public class Environnement1 {
 
-	public static final int NOMBRE_BOUTONS_EMPLACEMENTS = 15;
-	public static final int NOMBRE_BOUTONS_BOUTIQUE = 15;
+	public static final int NOMBRE_BOUTONS_EMPLACEMENTS = 10;
+	public static final int NOMBRE_BOUTONS_BOUTIQUE = 10;
 
 
 	public static Légume[] champs = créerChamps();
@@ -59,11 +57,6 @@ public class Environnement1 {
 	public static void afficherScore(){
 		
 		System.out.println("Score : "+Principale.score+" Vitamines : "+Principale.scoreVitamines+" Fibres : "+Principale.scoreFibres);
-
 		
 	}
-	
-	
-	
-	
 }

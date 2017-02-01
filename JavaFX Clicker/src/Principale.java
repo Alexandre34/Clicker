@@ -17,6 +17,9 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.BorderStroke;
+import javafx.scene.layout.BorderStrokeStyle;
+import javafx.scene.layout.BorderWidths;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -41,10 +44,12 @@ public class Principale extends Application {
 		
 		titre = new Label("Clicker des Chevaliers de Maxou");
 		demarrer = new Button("Démarrer le jeu");
-		Font f = new Font(20);
+		Font f = new Font(26);
 		demarrer.setFont(f);
 		demarrer.setTextFill(Color.GREEN);
-		Background ba = new Background(new BackgroundFill(Color.TRANSPARENT, 
+		demarrer.setBorder(new Border(new BorderStroke(Color.GREEN, BorderStrokeStyle.SOLID, 
+				CornerRadii.EMPTY, new BorderWidths(4), new Insets(0))));
+		Background ba = new Background(new BackgroundFill(Color.DEEPSKYBLUE, 
 				CornerRadii.EMPTY, null));
 		demarrer.setBackground(ba);
 		
@@ -62,7 +67,7 @@ public class Principale extends Application {
 		});
 		
 		VBox menu = new VBox(200);
-		demarrer.setPadding(new Insets(50, 50, 50, 0));
+		demarrer.setPadding(new Insets(20, 20, 20, 0));
 		demarrer.setTextAlignment(TextAlignment.CENTER);
 		menu.getChildren().addAll(titre, demarrer, fermer);
 		
