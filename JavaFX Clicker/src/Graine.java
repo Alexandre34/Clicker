@@ -6,8 +6,8 @@ public class Graine implements Achetable{
 	private float fibresPrix;
 	private float vitaminesPrix;
 	
+	//Constructeur
 	public Graine(EnumLégumes légume){
-		
 		this.type = légume;
 		this.fibresPrix = this.type.getFibresPrixBase();
 		this.vitaminesPrix = this.type.getVitaminesPrixBase();
@@ -40,7 +40,6 @@ public class Graine implements Achetable{
 	}
 	
 	public void acheter(){
-		
 		if(Principale.scoreFibres >= this.fibresPrix && Principale.scoreVitamines >= this.vitaminesPrix){
 			//tenir
 			Environnement1.tenir = this.type;
@@ -48,14 +47,10 @@ public class Graine implements Achetable{
 			//dépenser
 			Principale.scoreFibres -= this.getFibresPrix();
 			Principale.scoreVitamines -= this.getVitaminesPrix();
-			
 		}
-		else{
-			
+		else {
 			System.out.println("Impossible d'acheter cet article.");
-			
 		}
-
 	}
 	
 	public String toString(){

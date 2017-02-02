@@ -5,6 +5,7 @@ public class Légume extends Graine{
 	private float vitaminesProd;
 	private int niveau;
 	
+	//Constructeur
 	public Légume(EnumLégumes légume) {
 		super(légume);
 		this.fibresProd=this.getType().getFibresProdBase();
@@ -56,7 +57,7 @@ public class Légume extends Graine{
 		légume.setType(légume.getType());
 	}
 	
-	
+	//Fonctionnalité non encore implémentée
 	public void monterNiveau(){
 		this.niveau++;
 		this.setFibresPrix((float) (this.getFibresPrix() * Math.exp(0.2)));
@@ -67,6 +68,7 @@ public class Légume extends Graine{
 		}
 
 	}
+	
 	public String toString(){
 		return ("je suis une "+ this.getType().toString()+", niveau "+ this.getNiveau()+
 				" je produits "+Math.round(this.getVitaminesProd()) +
@@ -74,7 +76,4 @@ public class Légume extends Graine{
 							" upgrade = "+Math.round(this.getVitaminesPrix())+
 							" vit et "+ Math.round(this.getFibresPrix())+" fib");
 	}
-	
-	
-	
 }

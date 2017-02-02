@@ -30,6 +30,7 @@ public class Boutique implements EventHandler<ActionEvent>{
 	private Button achat;
 	private Achetable selection;
 	
+	//Affichage de la boutique
 	public void display() {
 		fenetre = new Stage();
 		fenetre.setTitle("Boutique");
@@ -56,6 +57,7 @@ public class Boutique implements EventHandler<ActionEvent>{
 		fenetre.showAndWait();
 	}
 	
+	//Méthode pour remplir la fenêtre de boutons de boutique
 	private void remplirListe() {
 		for(int i = 0 ; i < Environnement1.NOMBRE_BOUTONS_BOUTIQUE ; i++){
 			Button b = new Button("Boutique "+Environnement1.élémentBoutique[i].toString());
@@ -66,6 +68,7 @@ public class Boutique implements EventHandler<ActionEvent>{
 		}
 	}
 	
+	//Gestion des événements souris
 	public void handle(ActionEvent e) {
 		if(e.getSource() == this.achat) {
 			selection.acheter();

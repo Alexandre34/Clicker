@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,7 +34,9 @@ public class Partie extends Environnement1 implements EventHandler<ActionEvent> 
 	private static GridPane g;
 	private Label carVit;
 	private Label carFib;
+	private Image plant;
 	
+	//Affichage de la fenêtre de partie
 	public void display() {
 		Stage fenetre = new Stage();
 		fenetre.setTitle("Partie");
@@ -42,7 +45,7 @@ public class Partie extends Environnement1 implements EventHandler<ActionEvent> 
 		g = new GridPane();
 		g.setPadding(new Insets(10, 10, 10, 10));
 		g.setAlignment(Pos.TOP_CENTER);
-		g.setHgap(100);
+		g.setHgap(80);
 		g.setVgap(40);
 		remplirListe();
 		Font fond = new Font(20);
@@ -95,15 +98,18 @@ public class Partie extends Environnement1 implements EventHandler<ActionEvent> 
 		fenetre.show();
 	}
 	
+	//Ajout des boutons pour les champs
 	private void remplirListe() {
 		for(int i = 0 ; i < Environnement1.NOMBRE_BOUTONS_EMPLACEMENTS ; i++) {
 			Button b = new Button(Environnement1.champs[i].getType().toString());
+			b.setPrefSize(80, 80);
 			grilleBoutons.add(b);
 			g.add(b, i % 5, i / 5);
 			grilleBoutons.get(i).setOnAction(this);
 		}
 	}
 	
+	//Gestion des événements souris
 	public void handle(ActionEvent e){
 		//marquer score et placer une graine
 		for(int i = 0 ; i < NOMBRE_BOUTONS_EMPLACEMENTS ; i++){
@@ -120,6 +126,34 @@ public class Partie extends Environnement1 implements EventHandler<ActionEvent> 
 						Environnement1.champs[i] = new Légume( (EnumLégumes)Environnement1.tenir );
 						grilleBoutons.get(i).setText(
 								((EnumLégumes)Environnement1.tenir).toString() );
+						switch(Environnement1.champs[i].getType()) {
+							case PATATE : 
+								plant = new Image("L17.jpg", 70, 70, false, true);
+								break;
+							
+							case TOMATE : 
+								plant = new Image("L15.jpg", 70, 70, false, true);
+								break;
+							
+							case MAIS : 
+								plant = new Image("L67.jpg", 70, 70, false, true);
+								break;
+							
+							case OIGNON : 
+								plant = new Image("L66.jpg", 70, 70, false, true);
+								break;
+							
+							case POIREAU : 
+								plant = new Image("L6.jpg", 70, 70, false, true);
+								break;
+							
+							default : 
+								plant = new Image("L24.jpg", 70, 70, false, true);
+								break;
+						}
+						
+						grilleBoutons.get(i).setGraphic(new ImageView(plant));
+						grilleBoutons.get(i).setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
 						
 						Environnement1.tenir = null;
 					}
